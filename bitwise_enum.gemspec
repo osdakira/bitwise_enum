@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = BitwiseEnum::VERSION
   spec.authors       = ["Akira Osada"]
   spec.email         = ["osd.akira@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{ This is the implementation of OR enum. It has been implemented in bit operation. }
+  spec.summary       = spec.description
   spec.homepage      = ""
   spec.license       = "MIT"
 

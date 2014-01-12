@@ -1,6 +1,7 @@
 # BitwiseEnum
 
-TODO: Write a gem description
+It extend `Active Record enums` to `OR` values.
+It has been implemented in bit operation.
 
 ## Installation
 
@@ -18,7 +19,32 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```
+  class User < ActiveRecord::Base
+    bitwise_enum role: [ :admin, :worker ]
+  end
+```
+
+```
+user.admin!
+user.admin? # => true
+user.role   # => "['admin']"
+
+user.admin!
+user.admin? # => true
+user.not_admin!
+user.admin? # => false
+
+user.role = :admin
+user.admin? # => true
+user.role   # => ['admin']
+
+user.admin!     # => ['admin']
+user.reset_role # => nil
+user.role = []
+
+User.admin # => SELECT `users`.* FROM `users` WHERE (role & 1 = 1)
+```
 
 ## Contributing
 

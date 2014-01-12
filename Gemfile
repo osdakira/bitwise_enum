@@ -3,14 +3,12 @@ source 'https://rubygems.org'
 # Specify your gem's dependencies in bitwise_enum.gemspec
 gemspec
 
-gem 'rails', '~> 4.1.0.beta1'
+gem "activerecord", ">= 4.0.0.beta1"
+gem "activesupport", ">= 4.0.0.beta1"
 
-group :development do
-  gem 'sqlite3'
-  gem 'spring'
-  gem 'spring-commands-rspec'
-  gem 'pry-rails'
-  gem 'pry-byebug'
-  gem 'rspec-rails'
-  gem 'factory_girl_rails'
+gem "rake"
+gem "sqlite3"
+
+group :test do
+  gem "minitest"
 end

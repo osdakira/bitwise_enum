@@ -7,15 +7,17 @@ It has been implemented in bit operation.
 
 Add this line to your application's Gemfile:
 
-    gem 'bitwise_enum'
+    gem 'bitwise_enum', github: "osdakira/bitwise_enum"
 
 And then execute:
 
-    $ bundle
+    bundle
 
 Or install it yourself as:
 
-    $ gem install bitwise_enum
+    gem install specific_install
+    gem specific_install -l 'git://github.com/osdakira/bitwise_enum.git'
+    
 
 ## Usage
 

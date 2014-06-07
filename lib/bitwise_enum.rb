@@ -113,11 +113,11 @@ module BitwiseEnum
 
           # def admin! update! role: :admin end
           define_method("#{value}!") do
-            update! name => self[name].nil? ? bit : (self[name] |= bit)
+            update_attributes! name => self[name].nil? ? bit : (self[name] |= bit)
           end
 
           define_method("not_#{value}!") do
-              update! name => self[name] &= ~bit if self[name]
+            update_attributes! name => self[name] &= ~bit if self[name]
           end
         end
       end

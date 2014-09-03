@@ -8,6 +8,13 @@ class BitwiseEnumTest < BitwiseEnumBaseTest
     assert_equal true, user.admin?
   end
 
+  def test_not_admin?
+    user = User.new
+    assert_equal true, user.not_admin?
+    user.admin!
+    assert_equal false, user.not_admin?
+  end
+
   def test_admin_when_woker
     user = User.new
     user.worker!

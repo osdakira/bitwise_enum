@@ -111,13 +111,17 @@ module BitwiseEnum
             self[name].nil? ? false : !(self[name] & bit).zero?
           end
 
+          define_method("not_#{value}?") do
+            self[name].nil? ? true : (self[name] & bit).zero?
+          end
+
           # def admin! update! role: :admin end
           define_method("#{value}!") do
             update! name => self[name].nil? ? bit : (self[name] |= bit)
           end
 
           define_method("not_#{value}!") do
-              update! name => self[name] &= ~bit if self[name]
+            update! name => self[name] &= ~bit if self[name]
           end
         end
       end

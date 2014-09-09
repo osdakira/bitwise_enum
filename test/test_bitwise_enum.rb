@@ -91,10 +91,10 @@ class BitwiseEnumTest < BitwiseEnumBaseTest
   end
 
   def test_not_admin_scope
-    user1 = User.create(role: :admin)
-    user2 = User.create(role: :admin)
-    user3 = User.create(role: :worker)
-    assert_equal [user3], User.not_admin
+    User.create(role: :admin)
+    User.create(role: :admin)
+    user = User.create(role: :worker)
+    assert_equal [user], User.not_admin
   end
 
   def test_real_value

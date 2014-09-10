@@ -105,10 +105,16 @@ module BitwiseEnum
           # scope :admin, -> { where("role & 1 = 0") }
           # FIXME use arel
           klass.scope value, -> { klass.where("#{name} & #{bit} = #{bit}") }
+          klass.scope "not_#{value}",
+                      -> { klass.where("#{name} IS NULL OR #{name} & #{bit} = 0") }
 
           # def admin?() role == 1 end
           define_method("#{value}?") do
             self[name].nil? ? false : !(self[name] & bit).zero?
+          end
+
+          define_method("not_#{value}?") do
+            self[name].nil? ? true : (self[name] & bit).zero?
           end
 
           # def admin! update! role: :admin end
@@ -117,7 +123,7 @@ module BitwiseEnum
           end
 
           define_method("not_#{value}!") do
-              update! name => self[name] &= ~bit if self[name]
+            update! name => self[name] &= ~bit if self[name]
           end
         end
       end
